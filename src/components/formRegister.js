@@ -8,7 +8,8 @@ import {auth} from '../firebase/config';
          super(props)
          this.state = {
             inputMail : "",
-            inputPassword : ""
+            inputPassword : "",
+           
          }
 
      }
@@ -40,6 +41,8 @@ import {auth} from '../firebase/config';
                     value = {this.state.inputPassword}
                     secureTextEntry = {true}
                 />
+
+                
 
                 <TouchableOpacity
                 style = {styles.btn}

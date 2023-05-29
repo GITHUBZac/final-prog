@@ -19,18 +19,10 @@ import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
         return (
             <View>
                 <TouchableOpacity onPress = {() => this.props.navigation.navigate('Register')}>
-                    I do not have an account: Register
+                    Not a member yet? Sign up now: Register
                 </TouchableOpacity>
 
-                <TouchableOpacity 
-                style = {styles.button}
-                onPress = {()=>this.ejecutarConAccionCorta()}
-                onLongPress = {() => this.ejecutarConAccionLarga()}
-                >
-                    <Text style = {styles.textoBtn}>
-                        Algun dia sere Boton
-                    </Text>
-                </TouchableOpacity>
+               
 
             </View>
         )
