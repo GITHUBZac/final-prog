@@ -18,7 +18,9 @@ import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
     render() {
         return (
             <View>
-                <Text>  HOME </Text>
+                <TouchableOpacity onPress = {() => this.props.navigation.navigate('Register')}>
+                    I do not have an account: Register
+                </TouchableOpacity>
 
                 <TouchableOpacity 
                 style = {styles.button}
