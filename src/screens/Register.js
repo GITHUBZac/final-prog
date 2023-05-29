@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Text, View, TouchableOpacity } from 'react-native'
+import { Text, View } from 'react-native'
+import FormRegister from '../components/formRegister';
 
  class Register extends Component {
      constructor(props){
@@ -11,6 +12,7 @@ import { Text, View, TouchableOpacity } from 'react-native'
         return (
             <View>
                 <Text> Aqui vamos a tener nuestro registro </Text>
+                <FormRegister />
             
             </View>
         )
