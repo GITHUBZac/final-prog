@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
-import {auth} from '../firebase/config';
+import {auth, db} from '../firebase/config';
 
 
  class formRegister extends Component {
@@ -9,23 +9,54 @@ import {auth} from '../firebase/config';
          this.state = {
             inputMail : "",
             inputPassword : "",
-           
+            username: "",
+            bio: "",
+            foto: "",
+            error: ""
          }
 
      }
 
 
-     registrarUsuario(mail, password) {
+     registrarUsuario(mail, password, username, bio, foto) {
         auth.createUserWithEmailAndPassword(mail, password)
-        .then(data => console.log(data))
-        .catch(err => console.log(err))
+        .then(res => 
+            db.collection("users")
+            .add({
+                owner: mail,
+                password: password,
+                usuario: username,
+                bio: bio,
+                foto: foto,
+            })
+            .then(()=>{
+                this.setState({
+                    inputMail : "",
+                    inputPassword : "",
+                    username: "",
+                    bio: "",
+                    foto: "",
+                })
+                this.props.navigation.navigate('Login', {screen: 'Login'})
+            })
+            .catch((error) => console.log(error))
+            
+            
+            
+            )
+        .catch(error => this.setState({
+            error: `El error es: ${error.message}`
+        }))
     }
 
-
+ 
     render() {
         return (
 
             <View>
+                <Text>
+                    {this.state.error}
+                </Text>
                 <TextInput 
                     style={styles.input}
                     placeholder = 'digita tu correo electronico'
@@ -41,15 +72,37 @@ import {auth} from '../firebase/config';
                     value = {this.state.inputPassword}
                     secureTextEntry = {true}
                 />
+                <TextInput 
+                    style={styles.input}
+                    placeholder = 'digita tu username'
+                    onChangeText = {(text) => this.setState({username: text})}
+                    value = {this.state.username}
+                
+                />
+                <TextInput 
+                    style={styles.input}
+                    placeholder = 'digita tu bio'
+                    onChangeText = {(text) => this.setState({bio: text})}
+                    value = {this.state.bio}
+                />
+                <TextInput 
+                    style={styles.input}
+                    placeholder = 'agregar foto'
+                    onChangeText = {(text) => this.setState({foto: text})}
+                    value = {this.state.foto}
+                />
 
                 
-
-                <TouchableOpacity
-                style = {styles.btn}
-                onPress = {() => this.registrarUsuario(this.state.inputMail, this.state.inputPassword)}
-                >
-                    <Text style = {styles.btnText}> Register my account</Text>
-                </TouchableOpacity>
+                {
+                    this.state.inputMail=="" || this.state.inputPassword == "" ||this.state.username =="" ?
+                    <TouchableOpacity style = {styles.btnerror}>
+                    <Text style = {styles.buttonText}> Registrarme</Text>
+                  </TouchableOpacity>
+                :
+                <TouchableOpacity style = {styles.btn}onPress = {() => this.registrarUsuario(this.state.inputMail, this.state.inputPassword, this.state.username,this.state.bio, this.state.foto)}>
+                    <Text style = {styles.btnText}> Registrarme</Text>
+               </TouchableOpacity>
+                }
 
             </View>
 
@@ -74,7 +127,12 @@ const styles = StyleSheet.create({
     btnText : {
         textAlign: 'center',
         fontWeight: 'bold',
-        color: 'white'
+        color: 'green'
+    },
+    buttonText : {
+        textAlign: 'center',
+        fontWeight: 'bold',
+        color: 'grey'
     }
 })
 
