@@ -11,7 +11,8 @@ import {auth, db} from '../firebase/config';
             username: "",
             bio: "",
             foto: "",
-            error: ""
+            error: "",
+          
          }
 
      }
@@ -26,6 +27,7 @@ import {auth, db} from '../firebase/config';
                 usuario: username,
                 bio: bio,
                 foto: foto,
+                createdAt: Date.now()
             })
             .then(()=>{
                 this.setState({

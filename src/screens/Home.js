@@ -1,26 +1,41 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
+import { Text, View, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
+import { db } from '../firebase/config';
+import unPost from '../components/unPost/unPost';
 
  class Home extends Component {
      constructor(props) {
          super(props)
+         this.state = {
+             posts: []
+         }
      }
 
-     ejecutarConAccionCorta() {
-         console.log('El Cliente nos pidio algo');
+     componentDidMount(){
+        db.collection('posts').onSnapshot(
+            docs => {
+                let posteos = []
+                docs.forEach(doc => {
+                    posteos.push({
+                        id:doc.id,
+                        data: doc.data()
+                    }) 
+                    this.setState({
+                        posts: posteos
+                    })
+                })
+            }
+        )
      }
 
-     ejecutarConAccionLarga() {
-         console.log('El cliente nos pidio algo Largo');
-     }
-
-     
     render() {
         return (
             <View>
-                <TouchableOpacity onPress = {() => this.props.navigation.navigate('Register')}>
-                    Not a member yet? Sign up now: Register
-                </TouchableOpacity>
+                <FlatList
+                data={this.state.posts}
+                keyExtractor={unPost => unPost.id.toString()}
+                renderItem={({item}) => <unPost postData={item} navigation={this.props.navigation}/> }
+                />
 
                
 
