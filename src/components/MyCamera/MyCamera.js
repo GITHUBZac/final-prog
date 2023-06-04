@@ -79,11 +79,11 @@ class MyCamera extends Component {
                         source = {{uri: this.state.urlDos}}
                         resizeMode = 'cover'
                     />
-                    <TouchableOpacity onPress={()=> this.guardar}>
+                    <TouchableOpacity onPress={()=> this.guardar()}>
                         <Text>Guardar Foto</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={()=> this.rechazar}>
+                    <TouchableOpacity onPress={()=> this.rechazar()}>
                         <Text>Rechazar Foto</Text>
                     </TouchableOpacity>
                 </View>

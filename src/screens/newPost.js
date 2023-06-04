@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, TouchableWithoutFeedbackBase } from 'react-native'
 import {auth, db} from '../firebase/config';
-import MyCamera from '../components/MyCamera/MyCamera';
+import MyCamera from '../components/MyCamera/MyCamera'
 
 
  class newPost extends Component {
