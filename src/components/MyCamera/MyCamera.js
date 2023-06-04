@@ -11,7 +11,7 @@ class MyCamera extends Component {
         this.state = {
             permisos: false, 
             mostrarCamara: true,
-            url: ""
+            urlDos: ""
         }
         this.metodosCamara = ""
     }
@@ -26,7 +26,7 @@ class MyCamera extends Component {
         this.metodosCamara.takePictureAsync()
         .then(foto=>{
             this.setState({
-                url: foto.uri,
+                urlDos: foto.uri,
                 mostrarCamara: false,
             })
         })
@@ -34,7 +34,7 @@ class MyCamera extends Component {
     }
 
     guardar(){
-        fetch(this.state.url)
+        fetch(this.state.urlDos)
         .then(res => res.blob())
             .then( img => { 
            
@@ -51,7 +51,7 @@ class MyCamera extends Component {
     rechazar(){
         this.setState({
             mostrarCamara: true,
-            url: ""
+            urlDos: ""
         })
     }
 
@@ -68,16 +68,15 @@ class MyCamera extends Component {
 
                     <Camera 
                         style = {styles.camera}
-                        type = {Camera.Constants.Type.back}
+                        type = {Camera.Constants.Type.front}
                         ref={metodosCamara => this.metodosCamara = metodosCamara}
                     />
                     </View>
-
                 :
                 <View>
                     <Image
                         style = {styles.imagen}
-                        source = {{uri: this.state.url}}
+                        source = {{uri: this.state.urlDos}}
                         resizeMode = 'cover'
                     />
                     <TouchableOpacity onPress={()=> this.guardar}>
@@ -104,8 +103,8 @@ class MyCamera extends Component {
 const styles = StyleSheet.create(
 {
     camera: {
-        height: "70vh",
-        width: "70vh"    
+        height: "500",
+        width: "500"    
     },
 
     imagen: {

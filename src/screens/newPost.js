@@ -18,7 +18,7 @@ import MyCamera from '../components/MyCamera/MyCamera';
      
      onImageUpload(url){
          this.setState({
-             foto: url,
+             imagen: url,
              mostrarCamara: false
          })
      }
