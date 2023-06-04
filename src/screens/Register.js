@@ -17,6 +17,15 @@ import {auth, db} from '../firebase/config';
 
      }
 
+     componentDidMount(){ 
+        auth.onAuthStateChanged(
+        user => {
+            if (user){
+                this.props.navigation.navigate("HomeNav")
+            }
+        })
+    }
+
      registrarUsuario(mail, password, username, bio, foto) {
         auth.createUserWithEmailAndPassword(mail, password)
         .then(res => 

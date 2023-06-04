@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import {Camera } from "expo-camera"
+import { Camera } from "expo-camera"
 import { Text, View , StyleSheet, TouchableOpacity, Image} from 'react-native'
 import { auth } from '../../firebase/config'
 import { storage } from '../../firebase/config'
 
 
-class Camera extends Component {
+class MyCamera extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -115,4 +115,4 @@ const styles = StyleSheet.create(
 
 }
 )
-export default Camera;
+export default MyCamera;
