@@ -1,7 +1,20 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, StyleSheet, TouchableOpacity, FlatList, Image} from 'react-native'
+import { auth, db } from '../../firebase/config'
+import firebase from 'firebase'
 
-export default class unPost extends Component {
+
+class unPost extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            cantidadDeLikes: this.props.postData.data.likes.length,
+            propioLike: false,
+            comentarios : this.props.postData.data.comentarios
+        }
+    }
+
+
     render() {
         return (
             <View>
@@ -10,3 +23,6 @@ export default class unPost extends Component {
         )
     }
 }
+
+
+export default unPost
