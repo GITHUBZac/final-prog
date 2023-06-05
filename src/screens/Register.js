@@ -129,8 +129,9 @@ import newPost from './newPost';
                </TouchableOpacity>
                 }
 
-
-                <Text onPress={() => this.props.navigation.navigate('Login') }>Ir al Login</Text>
+                <View style = {styles.contenedorLogin}>
+                <Text style = {styles.login} onPress={() => this.props.navigation.navigate('Login') }>Ir al Login</Text>
+                </View>
             </View>
         )
     }
@@ -162,8 +163,16 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: 'grey'
     },
-    fondo : {
-        color: '#033d03'
+    login: {
+        color: 'grey',
+        fontWeight: 'bold',
+        textAlign: 'center'
+    },
+    contenedorLogin: {
+    backgroundColor: 'black',
+    width: 90,
+    borderRadius: 10,
+    height: 18
     }
 
 })

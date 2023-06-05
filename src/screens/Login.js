@@ -24,6 +24,9 @@ import {auth, db} from '../firebase/config';
              })
              this.props.navigation.navigate("HomeNav")
          })
+         .catch(error => this.setState({
+            error: `El error es: ${error.message}`
+        }))
      }
 
 
@@ -31,9 +34,9 @@ import {auth, db} from '../firebase/config';
         return (
 
             <View>
-
-        <Text onPress={() => this.props.navigation.navigate('Register') }>Volver al Register</Text>
-
+            <View style = {styles.contenedorLogin}>
+                <Text style={styles.login} onPress={() => this.props.navigation.navigate('Register') }>Volver al Register</Text>
+            </View>
                 <Text>
                     {this.state.error}
                 </Text>
@@ -98,6 +101,17 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontWeight: 'bold',
         color: 'grey'
+    },
+    login: {
+        color: 'grey',
+        fontWeight: 'bold',
+        textAlign: 'center'
+    },
+    contenedorLogin: {
+    backgroundColor: 'black',
+    width: 180,
+    borderRadius: 10,
+    height: 18
     }
 })
 
