@@ -92,7 +92,7 @@ class MyCamera extends Component {
                 </View>
                 :
                 
-                 <Text><ActivityIndicator size='large' color= 'blue'/>Tus permisos estan cargando</Text>
+                 <Text><ActivityIndicator size='large' color= 'blue'/>  Tus permisos estan cargando</Text>
                 
                 }
             </View>
