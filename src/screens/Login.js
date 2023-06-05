@@ -39,7 +39,7 @@ import {auth, db} from '../firebase/config';
                 </Text>
                 <TextInput 
                     style={styles.input}
-                    placeholder = 'digita tu correo electronico'
+                    placeholder = 'Digita tu E-Mail'
                     keyboardType = "email-address"
                     onChangeText = {(text) => this.setState({inputMail: text})}
                     value = {this.state.inputMail}
@@ -47,7 +47,7 @@ import {auth, db} from '../firebase/config';
 
                 <TextInput 
                     style={styles.input}
-                    placeholder = 'digita tu password'
+                    placeholder = 'Digita tu Password'
                     onChangeText = {(text) => this.setState({inputPassword: text})}
                     value = {this.state.inputPassword}
                     secureTextEntry = {true}

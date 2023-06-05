@@ -3,6 +3,8 @@ import { Camera } from "expo-camera"
 import { Text, View , StyleSheet, TouchableOpacity, Image, ActivityIndicator} from 'react-native'
 import { auth } from '../../firebase/config'
 import { storage } from '../../firebase/config'
+import { Entypo } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 
 class MyCamera extends Component {
@@ -63,7 +65,8 @@ class MyCamera extends Component {
                 this.state.mostrarCamara ?
                     <View style = {styles.container}>
                         <TouchableOpacity onPress={()=> this.sacarFoto()}>
-                            <Text>Sacar la foto</Text>
+                            <Text>Sacar la foto  <Entypo name="camera" size={24} color="black" /></Text>
+
                         </TouchableOpacity>
 
                     <Camera 
@@ -80,7 +83,7 @@ class MyCamera extends Component {
                         resizeMode = 'cover'
                     />
                     <TouchableOpacity onPress={()=> this.guardar()}>
-                        <Text>Guardar Foto</Text>
+                        <Text>Guardar Foto   <AntDesign name="upload" size={24} color="black" /></Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity onPress={()=> this.rechazar()}>
@@ -112,8 +115,7 @@ const styles = StyleSheet.create(
         width: "70vh"    
     },
     container: {
-        height: 500,
-            
+        height: 500,            
     },
 
 }
