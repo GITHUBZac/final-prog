@@ -30,14 +30,14 @@ import newPost from './newPost';
 
      
 
-     /*componentDidMount(){ 
+     componentDidMount(){ 
         auth.onAuthStateChanged(
         user => {
             if (user){
                 this.props.navigation.navigate("HomeNav")
             }
         })
-    }*/
+    }
 
      registrarUsuario(mail, password, username, bio, foto) {
         auth.createUserWithEmailAndPassword(mail, password)
