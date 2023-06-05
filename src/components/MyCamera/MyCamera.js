@@ -57,12 +57,12 @@ class MyCamera extends Component {
 
     render() {
         return (
-            <View>
+            <View style = {styles.container}>
                 {
                 this.state.permisos ?
                 this.state.mostrarCamara ?
-                    <View>
-                        <TouchableOpacity onPress={()=> this.sacarFoto}>
+                    <View style = {styles.container}>
+                        <TouchableOpacity onPress={()=> this.sacarFoto()}>
                             <Text>Sacar la foto</Text>
                         </TouchableOpacity>
 
@@ -103,14 +103,18 @@ class MyCamera extends Component {
 const styles = StyleSheet.create(
 {
     camera: {
-        height: "500",
-        width: "500"    
+        height: 500,
+        width: 500    
     },
 
     imagen: {
         height: "70vh",
         width: "70vh"    
-    }
+    },
+    container: {
+        height: 500,
+            
+    },
 
 }
 )

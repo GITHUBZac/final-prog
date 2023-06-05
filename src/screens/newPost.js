@@ -48,8 +48,8 @@ import MyCamera from '../components/MyCamera/MyCamera'
 
     render() {
         return (
-            <View>
-               <View>
+            <View style = {styles.container}>
+              
                    {
                      this.state.mostrarCamara ? 
                       <MyCamera onImageUpload = {url => this.onImageUpload(url)} />  
@@ -68,11 +68,22 @@ import MyCamera from '../components/MyCamera/MyCamera'
                      </View>  
                      
                    }
-               </View>
+               
                
             </View>
         )
     }
 }
+
+
+const styles = StyleSheet.create(
+    {
+        container: {
+            flex: 1    
+        },
+    
+    }
+    )
+
 
 export default newPost;
