@@ -83,7 +83,7 @@ class MyCamera extends Component {
                         resizeMode = 'cover'
                     />
                     <TouchableOpacity onPress={()=> this.guardar()}>
-                        <Text>Guardar Foto   <AntDesign name="upload" size={24} color="black" /></Text>
+                        <Text>Guardar Foto   </Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity onPress={()=> this.rechazar()}>
@@ -91,8 +91,8 @@ class MyCamera extends Component {
                     </TouchableOpacity>
                 </View>
                 :
-
-                 <ActivityIndicator size='large' color= 'blue'/>
+                
+                 <Text><ActivityIndicator size='large' color= 'blue'/>Tus permisos estan cargando</Text>
                 
                 }
             </View>
