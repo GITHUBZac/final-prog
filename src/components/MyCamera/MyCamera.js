@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Camera } from "expo-camera"
-import { Text, View , StyleSheet, TouchableOpacity, Image} from 'react-native'
+import { Text, View , StyleSheet, TouchableOpacity, Image, ActivityIndicator} from 'react-native'
 import { auth } from '../../firebase/config'
 import { storage } from '../../firebase/config'
 
@@ -89,7 +89,7 @@ class MyCamera extends Component {
                 </View>
                 :
 
-                 <Text>No le diste permiso a la camara</Text>
+                 <ActivityIndicator size='large' color= 'blue'/>
                 
                 }
             </View>

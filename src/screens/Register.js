@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Text, TouchableOpacity, View, StyleSheet, TextInput,  } from 'react-native'
 import {auth, db} from '../firebase/config';
+import MyCamera from '../components/MyCamera/MyCamera';
+import newPost from './newPost';
 
  class Register extends Component {
      constructor(props){
@@ -11,20 +13,31 @@ import {auth, db} from '../firebase/config';
             username: "",
             bio: "",
             foto: "",
+            mostrarCamara: false,
+            permisos: true,
             error: "",
           
          }
 
      }
 
-     componentDidMount(){ 
+     onImageUpload(url){
+        this.setState({
+            foto: url,
+            mostrarCamara: false,
+        })
+    }
+
+     
+
+     /*componentDidMount(){ 
         auth.onAuthStateChanged(
         user => {
             if (user){
                 this.props.navigation.navigate("HomeNav")
             }
         })
-    }
+    }*/
 
      registrarUsuario(mail, password, username, bio, foto) {
         auth.createUserWithEmailAndPassword(mail, password)
@@ -60,10 +73,8 @@ import {auth, db} from '../firebase/config';
 
     render() {
         return (
-            <View>
-                <Text> Aqui vamos a tener nuestro registro </Text>
-                
-                <Text>
+            <View style={styles.fondo}>
+                    <Text>
                     {this.state.error}
                 </Text>
                 <TextInput 
@@ -93,12 +104,18 @@ import {auth, db} from '../firebase/config';
                     onChangeText = {(text) => this.setState({bio: text})}
                     value = {this.state.bio}
                 />
-                <TextInput 
-                    style={styles.input}
-                    placeholder = 'agregar foto'
-                    onChangeText = {(text) => this.setState({foto: text})}
-                    value = {this.state.foto}
-                />
+                
+                { this.state.mostrarCamara ?
+                        <View style={{width: '100vw', heigth: '100vh'}}>
+                            <MyCamera onImageUpload={url => this.onImageUpload(url)}/> 
+                        </View> 
+                        :
+                        <TouchableOpacity style={styles.input} onPress={()=> this.setState({mostrarCamara:true})}>
+                            <Text>Agrega tu foto de perfil </Text>
+                        </TouchableOpacity>
+                  }
+                    
+                
 
                 {
                     this.state.inputMail=="" || this.state.inputPassword == "" ||this.state.username =="" ?
@@ -121,8 +138,9 @@ import {auth, db} from '../firebase/config';
 
 const styles = StyleSheet.create({
     input: {
-        borderWidth: 1,
-        borderColor: '#3d3d3d',
+        borderWidth: 2,
+        borderColor: 'black',
+        borderRadius: 5,
         marginTop: 24,
         height: 24,
         padding: 5
@@ -142,6 +160,10 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontWeight: 'bold',
         color: 'grey'
+    },
+    fondo : {
+        color: '#033d03'
     }
+
 })
 export default Register
