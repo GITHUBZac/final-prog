@@ -58,6 +58,7 @@ import newPost from './newPost';
                     username: "",
                     bio: "",
                     foto: "",
+
                 })
                 this.props.navigation.navigate('Login', {screen: 'Login'})
             })
@@ -123,7 +124,7 @@ import newPost from './newPost';
                     <Text style = {styles.buttonText}> Registrarme</Text>
                   </TouchableOpacity>
                 :
-                <TouchableOpacity style = {styles.btn}onPress = {() => this.registrarUsuario(this.state.inputMail, this.state.inputPassword, this.state.username,this.state.bio, this.state.foto)}>
+                <TouchableOpacity style = {styles.btn}onPress = {() => this.registrarUsuario(this.state.inputMail, this.state.inputPassword, this.state.username,this.state.bio, this.state.foto, this.state.mostrarCamara=false)}>
                     <Text style = {styles.btnText}> Registrarme</Text>
                </TouchableOpacity>
                 }
