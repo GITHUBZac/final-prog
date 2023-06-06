@@ -47,7 +47,7 @@ import UnPost from '../components/UnPost/UnPost'
 const styles = StyleSheet.create({
     container2:{
         flex:3,
-        backgroundColor: 'rgb(128,128,128)'
+        backgroundColor: 'white'
       },
     textoBtn: {
         color:"white",

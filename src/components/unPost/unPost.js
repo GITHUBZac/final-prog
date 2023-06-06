@@ -104,8 +104,8 @@ class UnPost extends Component {
 const styles  = StyleSheet.create({
   imagen:{
   height: 400,
-   width: 400, 
-   alignItems: 'center',
+  width: 400, 
+  alignItems: 'center',
   }
 })
 
