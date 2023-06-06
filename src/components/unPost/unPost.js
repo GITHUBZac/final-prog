@@ -25,7 +25,7 @@ class UnPost extends Component {
     }
 
     like(){
-        db.collection('post').doc(this.props.id).update({
+        db.collection('posts').doc(this.props.postData.id).update({
           likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email)
         })
         .then(()=> {
@@ -39,7 +39,7 @@ class UnPost extends Component {
       }
 
       unlike(){
-        db.collection('post').doc(this.props.id).update({
+        db.collection('posts').doc(this.props.postData.id).update({
           likes: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email)
         })
         .then(()=> {
