@@ -4,7 +4,7 @@ import {auth, db} from '../firebase/config';
 import MyCamera from '../components/MyCamera/MyCamera'
 
 
- class newPost extends Component {
+ class NewPost extends Component {
      constructor(){
          super()
          this.state = {
@@ -86,4 +86,4 @@ const styles = StyleSheet.create(
     )
 
 
-export default newPost;
+export default NewPost;

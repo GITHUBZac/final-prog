@@ -5,7 +5,7 @@ import firebase from 'firebase'
 import {FontAwesome} from '@expo/vector-icons'
 
 
-class unPost extends Component {
+class UnPost extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -16,7 +16,7 @@ class unPost extends Component {
     }
 
     componentDidMount(){
-        let miMeGusta = this.props.postData.likes.includes(auth.currentUser.email)
+        let miMeGusta = this.props.postData.data.likes.includes(auth.currentUser.email)
         if(miMeGusta){
             this.setState({
                 propioLike: true
@@ -56,10 +56,58 @@ class unPost extends Component {
     render() {
         return (
             <View>
+
+              <Image
+                style = {styles.imagen}
+                source = {{uri: this.props.postData.data.imagen}}
+                resizeMode = 'cover'
+              />
+            <Text>{this.props.postData.data.descripcion}</Text>
+
+          <View>
+            {
+          this.state.propioLike ?
+          <TouchableOpacity
+          onPress={()=> this.unlike()}
+          >
+            <FontAwesome
+            name='heart'
+            size={24}
+            color='red'
+            />
+          </TouchableOpacity>
+          :
+          <TouchableOpacity
+          onPress={()=> this.like()}
+          >
+            <FontAwesome
+            name='heart-o'
+            size={24}
+            color='red'
+            />
+          </TouchableOpacity>
+        }
+
+
+          </View>
+
+
+
+
+
+
             </View>
         )
     }
 }
 
+const styles  = StyleSheet.create({
+  imagen:{
+  height: 400,
+   width: 400, 
+   alignItems: 'center',
+  }
+})
 
-export default unPost
+
+export default UnPost
