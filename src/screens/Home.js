@@ -12,7 +12,7 @@ import unPost from '../components/unPost/unPost';
      }
 
      componentDidMount(){
-        db.collection('posts').onSnapshot(
+        db.collection('posts').orderBy('createdAt', 'desc').limit(15).onSnapshot(
             docs => {
                 let posteos = []
                 docs.forEach(doc => {
@@ -30,7 +30,7 @@ import unPost from '../components/unPost/unPost';
 
     render() {
         return (
-            <View>
+            <View style={styles.container3}>
                 <FlatList
                 data={this.state.posts}
                 keyExtractor={unPost => unPost.id.toString()}
@@ -45,14 +45,10 @@ import unPost from '../components/unPost/unPost';
 }
 
 const styles = StyleSheet.create({
-    button:{
-        backgroundColor: 'green',
-        borderRadius: 20,
-        borderWidth: 2,
-        textAlign: 'center',
-        padding: 10,
-        
-    },
+    container2:{
+        flex:3,
+        backgroundColor: 'rgb(128,128,128)'
+      },
     textoBtn: {
         color:"white",
 
