@@ -39,7 +39,7 @@ import MyCamera from '../components/MyCamera/MyCamera'
                 descripcion: "",
                 likes: [],
                 comentarios: [],
-
+                mostrarCamara: true
              })
              this.props.navigation.navigate('Home')
          })
@@ -62,7 +62,7 @@ import MyCamera from '../components/MyCamera/MyCamera'
                     onChangeText = {(text) => this.setState({descripcion: text})}
                     value = {this.state.descripcion}
                         />
-                        <TouchableOpacity onPress = {() => this.crearPost()}>
+                        <TouchableOpacity onPress = {() => this.crearPost()} >
                             Postear
                         </TouchableOpacity>
                      </View>  
