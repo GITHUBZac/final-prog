@@ -15,11 +15,47 @@ class unPost extends Component {
         }
     }
 
+    componentDidMount(){
+        let miMeGusta = this.props.postData.likes.includes(auth.currentUser.email)
+        if(miMeGusta){
+            this.setState({
+                propioLike: true
+            })
+        }
+    }
+
+    like(){
+        db.collection('post').doc(this.props.id).update({
+          likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email)
+        })
+        .then(()=> {
+          this.setState({
+            propioLike:true,
+            cantidadDeLikes: this.state.cantidadDeLikes + 1
+          })
+        })
+        .catch(err => console.log(err))
+    
+      }
+
+      unlike(){
+        db.collection('post').doc(this.props.id).update({
+          likes: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email)
+        })
+        .then(()=> {
+          this.setState({
+            propioLike:false,
+            cantidadDeLikes: this.state.cantidadDeLikes - 1
+          })
+        })
+        .catch(e => console.log(e))
+      }
+
+
 
     render() {
         return (
             <View>
-                <Text> textInComponent </Text>
             </View>
         )
     }
