@@ -26,7 +26,9 @@ import UnPost from '../components/UnPost/UnPost'
                 })
             }
         )
+        ,() => console.log(this.state.posts)
      }
+     
 
     render() {
         return (

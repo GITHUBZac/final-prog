@@ -2,8 +2,7 @@ import { View, Text, TouchableOpacity, StyleSheet, FlatList, Image } from 'react
 import React, {Component} from 'react'
 import ProfileData from '../components/Profile/ProfileData'
 import {db,auth} from '../firebase/config'
-import MiPosteo from '../components/MiPosteo/MiPosteo';
-
+import UnPost from '../components/UnPost/UnPost';
 class Profile extends Component {
 
     constructor(props){
@@ -12,13 +11,14 @@ class Profile extends Component {
         allPosts: [],
         infoUser: {},
         id: '',
-        loading: true
+        
       }
     }
     componentDidMount() {
 
-        db.collection('posts').where('owner', '==', auth.currentUser.email)
-          .orderBy('createdAt')
+        db.collection('posts')
+        .where('owner', '==', auth.currentUser.email)
+          .orderBy('createdAt','desc')
           .onSnapshot(docs => {
             let posts1 = []
             docs.forEach(doc => {
@@ -29,24 +29,24 @@ class Profile extends Component {
             })
             this.setState({
               allPosts: posts1
-            },
-              () => console.log(this.state.allPosts)
+            }
             )
     
           })
     
         db.collection('users')
-          .where('creador', '==', auth.currentUser.email)
+          .where('owner', '==', auth.currentUser.email)
           .onSnapshot(doc => {
             doc.forEach(doc =>
               this.setState({
                 id: doc.id,
                 infoUser: doc.data()
               }))
+              
     
           })
     
-    
+          ,() => console.log(this.state.infoUser)
       }
   
     /*componentDidMount(){
@@ -76,8 +76,8 @@ class Profile extends Component {
           <Text style={styles.container0}>Este es tu perfil!</Text>
           <li>
 
-            <ul><Text style={styles.container3} > Bienvenido a tu perfil {this.state.postData}! </Text></ul>
-            <ul><Text style={styles.container3}> La biografia del usuario: {this.state.postData}</Text></ul>
+            <ul><Text style={styles.container3} > Bienvenido a tu perfil {this.state.infoUser.username}! </Text></ul>
+            <ul><Text style={styles.container3}> La biografia del usuario: {this.state.infoUser.bio}</Text></ul>
             <ul><Text style={styles.container3}> Tu mail: {auth.currentUser.email} </Text> </ul>
             <ul><Text style={styles.container3}> Tu perfil se creo: {auth.currentUser.metadata.creationTime} </Text> </ul>
           </li>
@@ -87,11 +87,11 @@ class Profile extends Component {
                 <Text>Eliminar perfil</Text>
             </TouchableOpacity> */}
         </div>
-       {/*<View style={styles.container3}> <FlatList
-          data={this.state.allPosts}
-          keyExtractor={item => item.id.toString()}
-          renderItem={({ item }) => <MiPosteo navigation={this.props.postData} data={item.data} id={item.id} />} //RENDERIZA UN COMPONENTE POST que le paso a traves de la prop data toda la info que se guarda en items (data sale del push de doc.data
-        />  </View>*/}
+       <View style={styles.container3}> <FlatList
+                data={this.state.allPosts}
+                keyExtractor={UnPost => UnPost.id.toString()}
+                renderItem={({item}) => <UnPost postData={item} navigation={this.props.navigation}/> }
+                />  </View>
 
 
   <Text style={styles.boton} ><ProfileData navigation={this.props.navigation} /></Text> 
