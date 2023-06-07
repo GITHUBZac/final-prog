@@ -62,7 +62,7 @@ import MyCamera from '../components/MyCamera/MyCamera'
                     onChangeText = {(text) => this.setState({descripcion: text})}
                     value = {this.state.descripcion}
                         />
-                        <TouchableOpacity onPress = {() => this.crearPost()} >
+                        <TouchableOpacity style={styles.login} onPress = {() => this.crearPost()} >
                             Postear
                         </TouchableOpacity>
                      </View>  
@@ -80,6 +80,11 @@ const styles = StyleSheet.create(
     {
         container: {
             flex: 1    
+        },
+        login: {
+            color: 'grey',
+            fontWeight: 'bold',
+            textAlign: 'center'
         },
     
     }
