@@ -23,9 +23,12 @@ export default class HomeNav extends Component {
 
             <Tab.Screen name = 'NewPost' component = {NewPost} 
                 options = {{tabBarIcon: () => <AntDesign name = "plus" color = "black" size = {24} /> }} />
-             
+ 
+        
+             </Tab.Navigator>
+        
 
-            </Tab.Navigator>
+            
         )
     }
 }

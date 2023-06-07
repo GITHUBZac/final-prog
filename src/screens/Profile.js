@@ -113,7 +113,6 @@ class Profile extends Component {
 
   const styles = StyleSheet.create({
     contenedor:{
-      backgroundColor: 'rgb(128, 128, 128)',
       flex: 1
   },
     
