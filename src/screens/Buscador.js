@@ -38,7 +38,7 @@ class Buscador extends Component {
         usuarioBuscado == '' ?
             this.setState({ infoUser: resultadoBusqueda, busqueda: usuarioBuscado }) :
             resultadoBusqueda = this.state.allUsers.filter((item) => {
-                return (item.data.creador.includes(usuarioBuscado) ? item.data.creador.includes(usuarioBuscado) : item.data.nombreDeUsuario.includes(usuarioBuscado))
+                return (item.data.owner.includes(usuarioBuscado) ? item.data.owner.includes(usuarioBuscado) : item.data.usuario.includes(usuarioBuscado))
             })
         this.setState({ infoUser: resultadoBusqueda, busqueda: usuarioBuscado })
 
@@ -64,8 +64,8 @@ class Buscador extends Component {
                     <FlatList
                         data={this.state.infoUser}
                         keyExtractor={item => item.id.toString()}
-                        renderItem={({ item }) => <TouchableOpacity onPress={() => auth.currentUser.email === item.data.creador ? this.props.navigation.navigate('Profile', { email: item.data.creador }) : this.props.navigation.navigate('ProfileAmigo', { email: item.data.creador })}>
-                            <Text> {item.data.creador} ({item.data.nombreDeUsuario})</Text>
+                        renderItem={({ item }) => <TouchableOpacity onPress={() => auth.currentUser.email === item.data.owner ? this.props.navigation.navigate('Profile', { email: item.data.owner }) : this.props.navigation.navigate('ProfileAmigo', { email: item.data.owner })}>
+                            <Text> {item.data.owner} ({item.data.usuario})</Text>
                         </TouchableOpacity>} //RENDERIZA UN COMPONENTE POST que le paso a traves de la prop data toda la info que se guarda en items (data sale del push de doc.data
                     />                     
                 }
@@ -76,7 +76,6 @@ class Buscador extends Component {
 }
 const styles = StyleSheet.create({
     contenedor:{
-        backgroundColor: 'rgb(128, 128, 128)',
         flex: 1
     },
    
