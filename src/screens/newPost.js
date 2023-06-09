@@ -43,7 +43,7 @@ import MyCamera from '../components/MyCamera/MyCamera'
              })
              this.props.navigation.navigate('Home')
          })
-         
+         x
          
      }
 
