@@ -59,7 +59,7 @@ import MyCamera from '../components/MyCamera/MyCamera'
                      <View>
                         <TextInput 
                     style={styles}
-                    placeholder = 'Agregale una descripcion al posteo!'
+                    placeholder = 'Escribi aca para agregale una descripcion al posteo!'
                     keyboardType = "default"
                     onChangeText = {(text) => this.setState({descripcion: text})}
                     value = {this.state.descripcion}

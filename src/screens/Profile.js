@@ -79,6 +79,7 @@ class Profile extends Component {
             <ul><Text style={styles.container3} > Bienvenido a tu perfil {this.state.infoUser.username}! </Text></ul>
             <ul><Text style={styles.container3}> La biografia del usuario: {this.state.infoUser.bio}</Text></ul>
             <ul><Text style={styles.container3}> Tu mail: {auth.currentUser.email} </Text> </ul>
+            <ul><Text style={styles.container3}> Cantidad de posteos: {this.state.allPosts.length} </Text> </ul>
             <ul><Text style={styles.container3}> Tu perfil se creo: {auth.currentUser.metadata.creationTime} </Text> </ul>
           </li>
 
