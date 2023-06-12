@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Text, TouchableOpacity, View, StyleSheet, TextInput, } from 'react-native'
 import { auth, db } from '../firebase/config';
 import MyCamera from '../components/MyCamera/MyCamera';
-import newPost from './newPost';
 class Register extends Component {
     constructor(props) {
         super(props)

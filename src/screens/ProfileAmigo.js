@@ -2,7 +2,7 @@ import { Text, View, TouchableOpacity, FlatList, StyleSheet } from 'react-native
 import React, { Component } from 'react'
 import { auth, db } from '../firebase/config'
 import Posteos from '../components/unPost/Posteos';
-import ProfileData from '../components/Profile/ProfileData';
+
 
 export default class ProfileAmigo extends Component {
   constructor(props) {
@@ -73,7 +73,7 @@ export default class ProfileAmigo extends Component {
             :
             null
         }
-        <Text style={styles.boton} ><ProfileData navigation={this.props.navigation} /></Text>
+        <Text style={styles.boton} onPress={() => this.props.navigation.navigate('Home')}>Volver al Home</Text>
       </View>
     )
   }
