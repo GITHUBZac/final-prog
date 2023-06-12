@@ -68,6 +68,7 @@ class Profile extends Component {
 
 const styles = StyleSheet.create({
   contenedor: {
+    backgroundColor: '#DCDCDD',
     alignItems: 'center',
     flex: 1
   },
