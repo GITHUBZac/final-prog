@@ -100,7 +100,7 @@ class UnPost extends Component {
 
         <Text> Cantidad de Comentarios: {this.state.cantidadDeComentarios}</Text>
 
-        <Text  onPress={() => this.props.navigation.navigate('Login') }>Ver Comentarios</Text>
+        <Text onPress={() => this.props.navigation.navigate('Comments', { id: this.props.postData.id })}>Ver Comentarios</Text>
 
         
 
