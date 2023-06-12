@@ -1,7 +1,7 @@
 import { Text, View, FlatList, Image, StyleSheet } from 'react-native'
 import React, { Component } from 'react';
-import unPost from '../components/unPost/unPost';
 import FormComment from '../components/FormComment';
+import UnPost from '../components/unPost/UnPost';
 import { db, auth } from '../firebase/config';
 
 export default class Comments extends Component {

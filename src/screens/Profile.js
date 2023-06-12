@@ -47,7 +47,7 @@ class Profile extends Component {
           <div>
             <Text style={styles.container0}>Este es tu perfil!</Text>
             <li>
-              <ul><Text style={styles.container3} > Bienvenido a tu perfil {this.state.infoUser.username}! </Text></ul>
+              <ul><Text style={styles.container3} > Bienvenido a tu perfil {this.state.infoUser.usuario}! </Text></ul>
               <ul><Text style={styles.container3}> La biografia del usuario: {this.state.infoUser.bio}</Text></ul>
               <ul><Text style={styles.container3}> Tu mail: {auth.currentUser.email} </Text> </ul>
               <ul><Text style={styles.container3}> Cantidad de posteos: {this.state.allPosts.length} </Text> </ul>
