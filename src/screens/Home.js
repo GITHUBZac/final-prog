@@ -43,7 +43,10 @@ class Home extends Component {
 const styles = StyleSheet.create({
     container2: {
         flex: 3,
-        backgroundColor: 'white'
+        backgroundColor: 'black',
+        alignItems: 'center'
+
+        
     },
     textoBtn: {
         color: "white",
