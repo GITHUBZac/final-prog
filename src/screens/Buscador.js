@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, FlatList } from 'react-native';
 import { db, auth } from "../firebase/config"
-
 class Buscador extends Component {
     constructor(props) {
         super(props);
@@ -9,7 +8,7 @@ class Buscador extends Component {
         {
             infoUser: [],
             allUsers: [],
-            busqueda:''
+            busqueda: ''
         };
     }
     componentDidMount() {
@@ -29,9 +28,6 @@ class Buscador extends Component {
             )
         })
     }
-    // evitarSubmit(event) {
-    //     event.preventDefault();
-    // }
 
     buscador(usuarioBuscado) {
         let resultadoBusqueda = []
@@ -41,7 +37,6 @@ class Buscador extends Component {
                 return (item.data.owner.includes(usuarioBuscado) ? item.data.owner.includes(usuarioBuscado) : item.data.usuario.includes(usuarioBuscado))
             })
         this.setState({ infoUser: resultadoBusqueda, busqueda: usuarioBuscado })
-
     }
 
     render() {
@@ -54,9 +49,6 @@ class Buscador extends Component {
                     onChangeText={(text) => this.buscador(text)}
                     value={this.state.busqueda}
                 />
-                {/* <TouchableOpacity onSubmit={(event) => this.evitarSubmit(event)} style={styles.to}>
-                    <Text>Search</Text>
-                </TouchableOpacity>  */}
                 <Text>Quizas conozcas...</Text>
                 {(this.state.infoUser.length == 0 && this.state.busqueda != '') ?
                     <Text>El email o el nombre de usuario no existe</Text>
@@ -67,18 +59,17 @@ class Buscador extends Component {
                         renderItem={({ item }) => <TouchableOpacity onPress={() => auth.currentUser.email === item.data.owner ? this.props.navigation.navigate('Profile', { email: item.data.owner }) : this.props.navigation.navigate('ProfileAmigo', { email: item.data.owner })}>
                             <Text> {item.data.owner} ({item.data.usuario})</Text>
                         </TouchableOpacity>} //RENDERIZA UN COMPONENTE POST que le paso a traves de la prop data toda la info que se guarda en items (data sale del push de doc.data
-                    />                     
+                    />
                 }
             </View>
-
         );
     }
 }
 const styles = StyleSheet.create({
-    contenedor:{
+    contenedor: {
         flex: 1
     },
-   
+
     input: {
         fontFamily: 'monospace',
         fontSize: 20,

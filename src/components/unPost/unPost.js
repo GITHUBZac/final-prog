@@ -3,8 +3,6 @@ import { Text, View, StyleSheet, TouchableOpacity, FlatList, Image } from 'react
 import { auth, db } from '../../firebase/config'
 import firebase from 'firebase'
 import { FontAwesome } from '@expo/vector-icons'
-
-
 class UnPost extends Component {
   constructor(props) {
     super(props)
@@ -52,18 +50,15 @@ class UnPost extends Component {
       .catch(e => console.log(e))
   }
 
-
-
   render() {
     return (
       <View style={styles.bordeImg}>
-      <TouchableOpacity 
-      onPress={()=> this.props.navigation.navigate('ProfileAmigo',
-      {
-          email:this.props.postData.data.owner
-      })}>
-      <Text style={styles.textoOwner}>{this.props.postData.data.owner}</Text></TouchableOpacity>
-        
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate('ProfileAmigo',
+            {
+              email: this.props.postData.data.owner
+            })}>
+          <Text style={styles.textoOwner}>{this.props.postData.data.owner}</Text></TouchableOpacity>
         <Image
           style={styles.imagen}
           source={{ uri: this.props.postData.data.imagen }}
@@ -94,21 +89,9 @@ class UnPost extends Component {
                 />
               </TouchableOpacity>
           }
-
-
         </View>
-
         <Text> Cantidad de Comentarios: {this.state.cantidadDeComentarios}</Text>
-
-        <Text  onPress={()=> this.props.navigation.navigate('Comments', {id: this.props.postData.id}) }>Ver Comentarios</Text>
-
-        
-
-
-
-
-
-
+        <Text onPress={() => this.props.navigation.navigate('Comments', { id: this.props.postData.id })}>Ver Comentarios</Text>
       </View>
     )
   }
@@ -120,7 +103,7 @@ const styles = StyleSheet.create({
     width: 400,
     alignItems: 'center',
   },
-  bordeImg : {
+  bordeImg: {
     borderColor: 'green',
     borderWidth: 1,
     padding: 5

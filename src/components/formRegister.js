@@ -1,111 +1,98 @@
 import React, { Component } from 'react'
 import { Text, View, TextInput, TouchableOpacity, StyleSheet } from 'react-native'
-import {auth, db} from '../../firebase/config';
-
-
- class formRegister extends Component {
-     constructor(props) {
-         super(props)
-         this.state = {
-            inputMail : "",
-            inputPassword : "",
+import { auth, db } from '../../firebase/config';
+class formRegister extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            inputMail: "",
+            inputPassword: "",
             username: "",
             bio: "",
             foto: "",
             error: ""
-         }
+        }
 
-     }
-
-
-     registrarUsuario(mail, password, username, bio, foto) {
-        auth.createUserWithEmailAndPassword(mail, password)
-        .then(res => 
-            db.collection("users")
-            .add({
-                owner: mail,
-                password: password,
-                usuario: username,
-                bio: bio,
-                foto: foto,
-            })
-            .then(()=>{
-                this.setState({
-                    inputMail : "",
-                    inputPassword : "",
-                    username: "",
-                    bio: "",
-                    foto: "",
-                })
-                this.props.navigation.navigate('Login', {screen: 'Login'})
-            })
-            .catch((error) => console.log(error))
-            
-            
-            
-            )
-        .catch(error => this.setState({
-            error: `El error es: ${error.message}`
-        }))
     }
 
- 
+    registrarUsuario(mail, password, username, bio, foto) {
+        auth.createUserWithEmailAndPassword(mail, password)
+            .then(res =>
+                db.collection("users")
+                    .add({
+                        owner: mail,
+                        password: password,
+                        usuario: username,
+                        bio: bio,
+                        foto: foto,
+                    })
+                    .then(() => {
+                        this.setState({
+                            inputMail: "",
+                            inputPassword: "",
+                            username: "",
+                            bio: "",
+                            foto: "",
+                        })
+                        this.props.navigation.navigate('Login', { screen: 'Login' })
+                    })
+                    .catch((error) => console.log(error))
+            )
+            .catch(error => this.setState({
+                error: `El error es: ${error.message}`
+            }))
+    }
+
     render() {
         return (
-
             <View>
                 <Text>
                     {this.state.error}
                 </Text>
-                <TextInput 
+                <TextInput
                     style={styles.input}
-                    placeholder = 'Digita tu E-Mail'
-                    keyboardType = "email-address"
-                    onChangeText = {(text) => this.setState({inputMail: text})}
-                    value = {this.state.inputMail}
+                    placeholder='Digita tu E-Mail'
+                    keyboardType="email-address"
+                    onChangeText={(text) => this.setState({ inputMail: text })}
+                    value={this.state.inputMail}
                 />
+                <TextInput
+                    style={styles.input}
+                    placeholder='Digita tu Password'
+                    onChangeText={(text) => this.setState({ inputPassword: text })}
+                    value={this.state.inputPassword}
+                    secureTextEntry={true}
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholder='Digita tu Username'
+                    onChangeText={(text) => this.setState({ username: text })}
+                    value={this.state.username}
 
-                <TextInput 
-                    style={styles.input}
-                    placeholder = 'Digita tu Password'
-                    onChangeText = {(text) => this.setState({inputPassword: text})}
-                    value = {this.state.inputPassword}
-                    secureTextEntry = {true}
                 />
-                <TextInput 
+                <TextInput
                     style={styles.input}
-                    placeholder = 'Digita tu Username'
-                    onChangeText = {(text) => this.setState({username: text})}
-                    value = {this.state.username}
-                
+                    placeholder="Digita tu Biografia"
+                    onChangeText={(text) => this.setState({ bio: text })}
+                    value={this.state.bio}
                 />
-                <TextInput 
+                <TextInput
                     style={styles.input}
-                    placeholder = "Digita tu Biografia"
-                    onChangeText = {(text) => this.setState({bio: text})}
-                    value = {this.state.bio}
+                    placeholder='Agrega tu Foto de Perfil'
+                    onChangeText={(text) => this.setState({ foto: text })}
+                    value={this.state.foto}
                 />
-                <TextInput 
-                    style={styles.input}
-                    placeholder = 'Agrega tu Foto de Perfil'
-                    onChangeText = {(text) => this.setState({foto: text})}
-                    value = {this.state.foto}
-                />
-
-                
                 {
-                    this.state.inputMail=="" || this.state.inputPassword == "" ||this.state.username =="" ?
-                    <TouchableOpacity style = {styles.btnerror}>
-                    <Text style = {styles.buttonText}> Registrarme</Text>
-                  </TouchableOpacity>
-                :
-                <TouchableOpacity style = {styles.btn}onPress = {() => this.registrarUsuario(this.state.inputMail, this.state.inputPassword, this.state.username,this.state.bio, this.state.foto)}>
-                    <Text style = {styles.btnText}> Registrarme</Text>
-               </TouchableOpacity>
+                    this.state.inputMail == "" || this.state.inputPassword == "" || this.state.username == "" ?
+                        <TouchableOpacity style={styles.btnerror}>
+                            <Text style={styles.buttonText}> Registrarme</Text>
+                        </TouchableOpacity>
+                        :
+                        <TouchableOpacity style={styles.btn} onPress={() => this.registrarUsuario(this.state.inputMail, this.state.inputPassword, this.state.username, this.state.bio, this.state.foto)}>
+                            <Text style={styles.btnText}> Registrarme</Text>
+                        </TouchableOpacity>
                 }
-
             </View>
-
         )
     }
 }
@@ -124,12 +111,12 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         marginTop: 32
     },
-    btnText : {
+    btnText: {
         textAlign: 'center',
         fontWeight: 'bold',
         color: 'green'
     },
-    buttonText : {
+    buttonText: {
         textAlign: 'center',
         fontWeight: 'bold',
         color: 'grey'

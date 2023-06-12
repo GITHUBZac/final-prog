@@ -4,21 +4,20 @@ import UnPost from './UnPost'
 
 function Posteos(props) {
   return (
-    <View style= {styles.container}>
+    <View style={styles.container}>
       <FlatList
         data={props.data}
-        keyExtractor={(item)=> item.id.toString()}
-        renderItem={({ item }) => <UnPost navigation={props.navigation} postData={ item }/> }
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => <UnPost navigation={props.navigation} postData={item} />}
       />
     </View>
   )
 }
 const styles = StyleSheet.create({
-    container:{
-      flex: 1,
-      backgroundColor: 'white'
-    }
-  })
-
+  container: {
+    flex: 1,
+    backgroundColor: 'white'
+  }
+})
 
 export default Posteos

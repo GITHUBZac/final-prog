@@ -1,79 +1,64 @@
 import React, { Component } from 'react'
 import { Text, View, TextInput, TouchableOpacity, StyleSheet, TouchableHighlightBase } from 'react-native'
-import {auth, db} from '../firebase/config';
-
-
- class Login extends Component {
-     constructor(props) {
-         super(props)
-         this.state = {
-            inputMail : "",
-            inputPassword : "",
+import { auth, db } from '../firebase/config';
+class Login extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            inputMail: "",
+            inputPassword: "",
             error: ""
-            
-         }
+        }
+    }
 
-     }
-
-
-     iniciarUsuarioLogin(email,pass){
-         auth.signInWithEmailAndPassword(email,pass)
-         .then(res=>{
-             this.setState({
-                 error: "",
-             })
-             this.props.navigation.navigate("HomeNav")
-         })
-         .catch(error => this.setState({
-            error: `El error es: ${error.message}`
-        }))
-     }
+    iniciarUsuarioLogin(email, pass) {
+        auth.signInWithEmailAndPassword(email, pass)
+            .then(res => {
+                this.setState({
+                    error: "",
+                })
+                this.props.navigation.navigate("HomeNav")
+            })
+            .catch(error => this.setState({
+                error: `El error es: ${error.message}`
+            }))
+    }
 
 
     render() {
         return (
-
             <View>
-            <View style = {styles.contenedorLogin}>
-                <Text style={styles.login} onPress={() => this.props.navigation.navigate('Register') }>Volver al Register</Text>
-            </View>
+                <View style={styles.contenedorLogin}>
+                    <Text style={styles.login} onPress={() => this.props.navigation.navigate('Register')}>Volver al Register</Text>
+                </View>
                 <Text>
                     {this.state.error}
                 </Text>
-                <TextInput 
+                <TextInput
                     style={styles.input}
-                    placeholder = 'Digita tu E-Mail'
-                    keyboardType = "email-address"
-                    onChangeText = {(text) => this.setState({inputMail: text})}
-                    value = {this.state.inputMail}
+                    placeholder='Digita tu E-Mail'
+                    keyboardType="email-address"
+                    onChangeText={(text) => this.setState({ inputMail: text })}
+                    value={this.state.inputMail}
                 />
-
-                <TextInput 
+                <TextInput
                     style={styles.input}
-                    placeholder = 'Digita tu Password'
-                    onChangeText = {(text) => this.setState({inputPassword: text})}
-                    value = {this.state.inputPassword}
-                    secureTextEntry = {true}
+                    placeholder='Digita tu Password'
+                    onChangeText={(text) => this.setState({ inputPassword: text })}
+                    value={this.state.inputPassword}
+                    secureTextEntry={true}
                 />
-               
-
-                
                 {
-                    this.state.inputMail=="" || this.state.inputPassword == ""  ?
-                    <TouchableOpacity style = {styles.btnerror}>
-                    <Text style = {styles.buttonText}> Loguearme</Text>
-                  </TouchableOpacity>
-                :
-                <TouchableOpacity style = {styles.btn}onPress = {() => this.iniciarUsuarioLogin(this.state.inputMail, this.state.inputPassword)}>
-                    <Text style = {styles.btnText}> Loguearme</Text>
-                
-               </TouchableOpacity>
+                    this.state.inputMail == "" || this.state.inputPassword == "" ?
+                        <TouchableOpacity style={styles.btnerror}>
+                            <Text style={styles.buttonText}> Loguearme</Text>
+                        </TouchableOpacity>
+                        :
+                        <TouchableOpacity style={styles.btn} onPress={() => this.iniciarUsuarioLogin(this.state.inputMail, this.state.inputPassword)}>
+                            <Text style={styles.btnText}> Loguearme</Text>
+                        </TouchableOpacity>
                 }
-
             </View>
-
-                
-
         )
     }
 }
@@ -92,12 +77,12 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         marginTop: 32
     },
-    btnText : {
+    btnText: {
         textAlign: 'center',
         fontWeight: 'bold',
         color: 'green'
     },
-    buttonText : {
+    buttonText: {
         textAlign: 'center',
         fontWeight: 'bold',
         color: 'grey'
@@ -108,10 +93,10 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     contenedorLogin: {
-    backgroundColor: 'black',
-    width: 180,
-    borderRadius: 10,
-    height: 18
+        backgroundColor: 'black',
+        width: 180,
+        borderRadius: 10,
+        height: 18
     }
 })
 
