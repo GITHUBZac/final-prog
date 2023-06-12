@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Text, View, StyleSheet, TouchableOpacity, FlatList, Image } from 'react-native'
 import { auth, db } from '../../firebase/config'
 import firebase from 'firebase'
-import { FontAwesome } from '@expo/vector-icons'
+import { FontAwesome, EvilIcons } from '@expo/vector-icons'
 
 
 class UnPost extends Component {
@@ -94,6 +94,7 @@ class UnPost extends Component {
                 />
               </TouchableOpacity>
           }
+
         </View>
         <Text> Cantidad de Comentarios: {this.state.cantidadDeComentarios}</Text>
         <Text onPress={() => this.props.navigation.navigate('Comments', { id: this.props.postData.id })}>Ver Comentarios</Text>
