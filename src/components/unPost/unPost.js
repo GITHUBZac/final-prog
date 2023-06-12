@@ -12,7 +12,7 @@ class UnPost extends Component {
       cantidadDeLikes: this.props.postData.data.likes.length,
       propioLike: false,
       comentarios: this.props.postData.data.comentarios,
-      cantidadDeComentarios: this.props.postData.data.comentarios.length
+      cantidadDeComentarios: this.props.postData.data.comentarios.length,
     }
   }
 
