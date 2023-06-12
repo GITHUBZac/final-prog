@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import unPost from '../components/unPost/unPost';
 import FormComment from '../components/FormComment';
 import { db, auth } from '../firebase/config';
+
 export default class Comments extends Component {
     constructor(props) {
         super(props)
@@ -24,18 +25,13 @@ export default class Comments extends Component {
         return (
             <View>
                 <Text>Aca podras ver todos los comentarios del posteo</Text>
-                <Image
-                    style={styles.imagen}
-                    source={{}}
-                    resizeMode='cover'
-                />
-                <Text style={styles.textoOwner}>{this.props.postData.data.owner}</Text>
                 <FlatList
                     data={this.state.data.comentarios}
                     keyExtractor={item => item.createdAt.toString()}
                     renderItem={({ item }) => <Text>{item.comentario}</Text>}
                 />
                 <FormComment idPost={this.props.route.params.id} />
+                <Text onPress={() => this.props.navigation.navigate('Home')}>Volver al home</Text>
             </View>
         )
     }

@@ -33,7 +33,7 @@ export default class FormComment extends Component {
                     placeholder='Agrega tu comentario aquí'
                 />
                 <TouchableOpacity onPress={() => this.crearComentario(this.state.comentario)}>
-                    <Text>Apreta para comentar</Text>
+                    <Text style={styles.buttonText}>Apreta para comentar</Text>
                 </TouchableOpacity>
             </View>
         )
@@ -44,5 +44,10 @@ const styles = StyleSheet.create({
     input: {
         borderColor: 'red',
         borderWidth: 2
-    }
+    },
+    buttonText: {
+        textAlign: 'center',
+        fontWeight: 'bold',
+        color: 'grey'
+    },
 })
