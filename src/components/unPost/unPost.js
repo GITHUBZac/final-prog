@@ -57,16 +57,13 @@ class UnPost extends Component {
   render() {
     return (
       <View style={styles.bordeImg}>
-        <TouchableOpacity onPress={()=> this.props.navigation.navigate(
-        'HomeNav2',
-        {
-          screen: 'ProfileAmigo',
-          params:{
-            mail:this.props.data.owner
-          }
-        }
-      )}></TouchableOpacity>
-        <Text style={styles.textoOwner}>{this.props.postData.data.owner}</Text>
+      <TouchableOpacity 
+      onPress={()=> this.props.navigation.navigate('ProfileAmigo',
+      {
+          email:this.props.postData.data.owner
+      })}>
+      <Text style={styles.textoOwner}>{this.props.postData.data.owner}</Text></TouchableOpacity>
+        
         <Image
           style={styles.imagen}
           source={{ uri: this.props.postData.data.imagen }}
@@ -105,8 +102,7 @@ class UnPost extends Component {
 
         <Text  onPress={() => this.props.navigation.navigate('Login') }>Ver Comentarios</Text>
 
-
-        <Text  onPress={() => this.props.navigation.navigate('ProfileAmigo') }>Ver Perfil</Text>
+        
 
         {/* Corregir redireccionamiento!! */}
 

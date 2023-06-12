@@ -1,90 +1,92 @@
-import { Text, View, TouchableOpacity, StyleSheet, FlatList, Image } from 'react-native'
-import React, { Component } from 'react'
-import { db } from '../firebase/config'
-import UnPost from '../components/UnPost/UnPost'
+import {Text,View,TouchableOpacity, FlatList, StyleSheet} from 'react-native';
+import React , {Component} from 'react'
+import {auth, db} from '../firebase/config'
+import Posteos from '../components/unPost/Posteos';
 
+export default class ProfileAmigo extends Component{
 
-export default class ProfileAmigo extends Component {
-    constructor(props) {
+    constructor(props){
         super(props)
-        console.log(props)
-        this.state = {
-            mailFriend: props.route.params.mail,
-            postsFriend: [],
-            infoUser:{}
-        }
-    }
+        this.state={
+          infoUser: '',
+          props: props,
+          posteos:[]
+        }}
 
-    componentDidMount() {
-        db
-            .collection('posts')
-            .orderBy('createdAt' , 'desc')
-            .where('owner', '==', this.state.mailFriend)
-            .onSnapshot(docs => {
-                let posts = []
-                docs.forEach(doc => posts.push({
+    componentDidMount(){
+        console.log(this.props)
+        db.collection('users')
+        .where('owner', '==', this.props.route.params.email)
+        .onSnapshot(
+          docs => {
+            let arrUser=[]
+              docs.forEach(doc => {
+                  arrUser.push({
                     id: doc.id,
                     data: doc.data()
-                }))
-                this.setState({
-                    postsFriend: posts
-                }, () => console.log(this.state.postsFriend))
-            })
-        db.collection('users')
-            .where('owner', '==', this.state.mailFriend)
-            .onSnapshot(doc => {
-                doc.forEach(doc =>
+                  })
+                  console.log(arrUser);
+                  this.setState({
+                    infoUser: arrUser[0]
+                  })
+                  
+                  
+              })
+
+              db.collection('posts').where('owner', '==', this.props.route.params.email).onSnapshot(
+                docs => {
+                    let arrPost = [];
+                    docs.forEach(doc => {
+                        arrPost.push({
+                            id: doc.id,
+                            data: doc.data()
+                        })
+                    })
                     this.setState({
-                        id: doc.id,
-                        infoUser: doc.data()
-                    }))
-
-            })
-    }
-    render() {
-        return (
-            <>
-                <Text style={styles.container0} >{this.state.infoUser.username}'s Profile</Text>
+                        posteos: arrPost
+                    })
+                }
+              )
+          })}
 
 
-                <Text style={styles.container0}>{this.state.infoUser.username}</Text>
-                <Text style={styles.container0}>{this.props.route.params.email}</Text>
-                <Text style={styles.container0}>{this.state.infoUser.descripcion}</Text>
-                <Text style={styles.container0}>{this.state.postsFriend.length}</Text>
-                <Image 
-                    source={{ uri: this.state.infoUser.imagen }}
-                    resizeMode='contain' />
-                    <View style={styles.container3}>
 
-                    <FlatList
-                    data={this.state.postsFriend}
-                    keyExtractor={item => item.id.toString()}
-                    renderItem={({ item }) => <UnPost data={item.data} id={item.id} />} //RENDERIZA UN COMPONENTE POST que le paso a traves de la prop data toda la info que se guarda en items (data sale del push de doc.data
-                /> 
-                    </View>
-                
+    render(){
+        return(
+
+            <View style= {styles.container} >
+                {
+                    this.state.infoUser !== '' 
+                    ?
+                    <>
+                    <Text style= {styles.owner}>{this.state.infoUser.data.owner}</Text>,
+                    <Posteos
+                    data = {this.state.posteos}
+                    navigation = {this.props.navigation}/> 
                     </>
+                    :
+                    null
+
+                }
+                
+            </View>
         )
     }
 }
-
 const styles = StyleSheet.create({
-    container0:{
-        fontFamily: 'monospace',
-      },
-    container1:{
-      flex:1,
-      justifyContent:'center',
-      alignItems:'center'
+    container:{
+     backgroundColor: '#DCDCDD',
+     flex:1
     },
-    container2:{
-      flex:3
-    },
-    container3:{
-    
-        flex:5
-      },
-    image:{
-      height:300
+    owner:{
+      padding: 10,
+      margin: 10,
+      fontWeight: 'bold', 
+      fontSize: 15,
+      backgroundColor: 'black',
+      borderRadius:10,
+      color: 'white',
+      textAlign: 'center',
     }
+   
   })

@@ -3,11 +3,11 @@ import { Text, View } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { AntDesign } from '@expo/vector-icons';
-
 import Home from '../screens/Home';
 import Profile from '../screens/Profile';
 import NewPost from '../screens/NewPost';
 import Buscador from '../screens/Buscador';
+import FunctionalitiesNav from './FunctionalitiesNav';
 
 
 const Tab = createBottomTabNavigator();
@@ -16,7 +16,8 @@ export default class HomeNav extends Component {
     render() {
         return (
             <Tab.Navigator >
-                <Tab.Screen name='Home' component={Home}
+            
+                <Tab.Screen name='Home' component={FunctionalitiesNav}
                     options={{ tabBarIcon: () => <AntDesign name='home' color='black' size={24} /> }} />
 
                 <Tab.Screen

@@ -6,7 +6,7 @@ import ProfileAmigo from '../screens/ProfileAmigo'
 
 const Stack = createNativeStackNavigator()
 
-export default class HomeNavigation extends Component {
+export default class FunctionalitiesNav extends Component {
   render() {
     return (
       <Stack.Navigator>

@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, StyleSheet, FlatList, Image } from 'react
 import React, {Component} from 'react'
 import ProfileData from '../components/Profile/ProfileData'
 import {db,auth} from '../firebase/config'
-import UnPost from '../components/UnPost/UnPost';
+import UnPost from '../components/unPost/UnPost';
 class Profile extends Component {
 
     constructor(props){

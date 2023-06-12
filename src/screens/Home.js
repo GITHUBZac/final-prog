@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
 import { db } from '../firebase/config';
-import UnPost from '../components/UnPost/UnPost'
+import Posteos from '../components/unPost/Posteos';
 
  class Home extends Component {
      constructor(props) {
@@ -33,11 +33,10 @@ import UnPost from '../components/UnPost/UnPost'
     render() {
         return (
             <View style={styles.container2}>
-                <FlatList
-                data={this.state.posts}
-                keyExtractor={UnPost => UnPost.id.toString()}
-                renderItem={({item}) => <UnPost postData={item} navigation={this.props.navigation}/> }
-                />
+                <Posteos
+               data={this.state.posts}
+               navigation= {this.props.navigation}
+            />
 
                
 
