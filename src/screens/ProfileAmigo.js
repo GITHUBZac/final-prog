@@ -61,7 +61,7 @@ export default class ProfileAmigo extends Component {
             <li>
               <ul><Text style={styles.container3} > Bienvenido a tu perfil {this.state.infoUser.data.usuario}! </Text></ul>
               <ul><Text style={styles.container3}> La biografia del usuario: {this.state.infoUser.data.bio}</Text></ul>
-              <ul><Text style={styles.container3}> Tu mail: {auth.currentUser.email} </Text> </ul>
+              <ul><Text style={styles.container3}> Tu mail: {this.props.route.params.email} </Text> </ul>
               <ul><Text style={styles.container3}> Cantidad de posteos: {this.state.posteos.length} </Text> </ul>
               <ul><Text style={styles.container3}> Tu perfil se creo: {auth.currentUser.metadata.creationTime} </Text> </ul>
             </li>
