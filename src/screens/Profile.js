@@ -68,6 +68,7 @@ class Profile extends Component {
 
 const styles = StyleSheet.create({
   contenedor: {
+    alignItems: 'center',
     flex: 1
   },
 
@@ -92,14 +93,15 @@ const styles = StyleSheet.create({
     flex: 5
   },
   image: {
-    height: 300
+    height: 300,
+    alignItems: 'center'
   },
   boton: {
     fontFamily: 'monospace',
     fontSize: 16,
     margin: 15,
     backgroundColor: 'rgb(0, 0, 0)',
-    color: 'rgb(128, 128, 128)',
+    color: 'white',
     borderRadius: 20,
     textAlign: 'center',
     padding: 5

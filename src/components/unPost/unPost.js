@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   bordeImg : {
-    borderColor: 'green',
+    borderColor: 'black',
     borderWidth: 1,
     padding: 5
   },

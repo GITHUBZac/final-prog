@@ -2,6 +2,7 @@ import { Text, View, TouchableOpacity, FlatList, StyleSheet } from 'react-native
 import React, { Component } from 'react'
 import { auth, db } from '../firebase/config'
 import Posteos from '../components/unPost/Posteos';
+import ProfileData from '../components/Profile/ProfileData';
 
 export default class ProfileAmigo extends Component {
   constructor(props) {
@@ -55,17 +56,24 @@ export default class ProfileAmigo extends Component {
           this.state.infoUser !== ''
             ?
             <>
-              <Text style={styles.owner}>{this.state.infoUser.data.owner}</Text>,
-              <Text style={styles.owner}>{this.state.infoUser.data.usuario}</Text>,
-              <Text> Cantidad de posteos: {this.state.posteos.length} </Text>,
+            <div>
+            <Text style={styles.container0}>Este es tu perfil!</Text>
+            <li>
+              <ul><Text style={styles.container3} > Bienvenido a tu perfil {this.state.infoUser.data.usuario}! </Text></ul>
+              <ul><Text style={styles.container3}> La biografia del usuario: {this.state.infoUser.data.bio}</Text></ul>
+              <ul><Text style={styles.container3}> Tu mail: {auth.currentUser.email} </Text> </ul>
+              <ul><Text style={styles.container3}> Cantidad de posteos: {this.state.posteos.length} </Text> </ul>
+              <ul><Text style={styles.container3}> Tu perfil se creo: {auth.currentUser.metadata.creationTime} </Text> </ul>
+            </li>
+          </div>
               <View style={styles.container3}><Posteos
                 data={this.state.posteos}
                 navigation={this.props.navigation} /> </View>
-              <Text> La biografia del usuario: {this.state.infoUser.data.bio}</Text>,
             </>
             :
             null
         }
+        <Text style={styles.boton} ><ProfileData navigation={this.props.navigation} /></Text>
       </View>
     )
   }
@@ -73,7 +81,8 @@ export default class ProfileAmigo extends Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#DCDCDD',
-    flex: 1
+    flex: 1,
+    alignItems: 'center'
   },
   owner: {
     padding: 10,
@@ -89,6 +98,25 @@ const styles = StyleSheet.create({
     fontFamily: 'monospace',
     color: 'rgb(0,0,0)',
     flex: 1
+  },
+
+  container0: {
+    fontFamily: 'monospace',
+    color: 'rgb(0,0,0)',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  boton: {
+    fontFamily: 'monospace',
+    fontSize: 16,
+    margin: 15,
+    backgroundColor: 'rgb(0, 0, 0)',
+    color: 'white',
+    borderRadius: 20,
+    textAlign: 'center',
+    padding: 5
+
   }
 
 })
