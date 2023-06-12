@@ -60,9 +60,12 @@ export default class ProfileAmigo extends Component{
                     ?
                     <>
                     <Text style= {styles.owner}>{this.state.infoUser.data.owner}</Text>,
-                    <Posteos
+                    <Text style= {styles.owner}>{this.state.infoUser.data.usuario}</Text>,
+                    <Text> Cantidad de posteos: {this.state.posteos.length} </Text>,
+                    <View style={styles.container3}><Posteos
                     data = {this.state.posteos}
-                    navigation = {this.props.navigation}/> 
+                    navigation = {this.props.navigation}/> </View>
+                    <Text> La biografia del usuario: {this.state.infoUser.data.bio}</Text>,
                     </>
                     :
                     null
@@ -87,6 +90,11 @@ const styles = StyleSheet.create({
       borderRadius:10,
       color: 'white',
       textAlign: 'center',
+    },
+    container3: {
+      fontFamily: 'monospace',
+      color: 'rgb(0,0,0)',
+      flex: 1
     }
    
   })
