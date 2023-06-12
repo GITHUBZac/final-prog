@@ -94,21 +94,9 @@ class UnPost extends Component {
                 />
               </TouchableOpacity>
           }
-
-
         </View>
-
         <Text> Cantidad de Comentarios: {this.state.cantidadDeComentarios}</Text>
-
         <Text onPress={() => this.props.navigation.navigate('Comments', { id: this.props.postData.id })}>Ver Comentarios</Text>
-
-        
-
-        {/* Corregir redireccionamiento!! */}
-
-
-
-
       </View>
     )
   }
@@ -123,7 +111,7 @@ const styles = StyleSheet.create({
   bordeImg : {
     borderColor: 'black',
     borderWidth: 1,
-    padding: 5
+    padding: 5,
   },
   textoOwner: {
     fontWeight: 'bold'

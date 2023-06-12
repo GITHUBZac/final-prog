@@ -160,7 +160,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'black',
         width: 90,
         borderRadius: 10,
-        height: 18
+        height: 18,
+        margin: 10
     }
 
 })

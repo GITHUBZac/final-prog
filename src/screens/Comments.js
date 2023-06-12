@@ -23,24 +23,42 @@ export default class Comments extends Component {
     render() {
         console.log(this.props);
         return (
+            
             <View>
-                <Text>Aca podras ver todos los comentarios del posteo</Text>
+            {this.state.data?.comentarios?.length === 0 ?
+                <View style={styles.texto}>
+                  <Text style={styles.texto}>Aca podras ver todos los comentarios del posteo</Text>
+                  <Text>
+                    No hay comentarios!
+                  </Text> 
+                <FormComment idPost={this.props.route.params.id} />
+                <Text onPress={() => this.props.navigation.navigate('Home')}>Volver al home</Text>
+                </View>
+            :
+            <View>
+                <Text style={styles.texto}>Aca podras ver todos los comentarios del posteo</Text>
                 <FlatList
                     data={this.state.data.comentarios}
                     keyExtractor={item => item.createdAt.toString()}
                     renderItem={({ item }) => <Text>{item.comentario}</Text>}
                 />
                 <FormComment idPost={this.props.route.params.id} />
-                <Text onPress={() => this.props.navigation.navigate('Home')}>Volver al home</Text>
+                <Text style={styles.login} onPress={() => this.props.navigation.navigate('Home')}>Volver al home</Text>
+            </View>}
             </View>
         )
     }
 }
 
 const styles = StyleSheet.create({
-    imagen: {
-        height: 400,
-        width: 400,
-        alignItems: 'center',
+    texto: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    login: {
+        color: 'grey',
+        fontWeight: 'bold',
+        textAlign: 'left'
     },
 })
