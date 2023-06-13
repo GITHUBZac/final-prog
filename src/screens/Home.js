@@ -43,7 +43,7 @@ class Home extends Component {
 const styles = StyleSheet.create({
     container2: {
         flex: 3,
-        backgroundColor: '#DCDCDD',
+        backgroundColor: '#C9C9C9',
         alignItems: 'center'
 
         

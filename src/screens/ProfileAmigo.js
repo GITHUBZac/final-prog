@@ -80,7 +80,7 @@ export default class ProfileAmigo extends Component {
 }
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#DCDCDD',
+    backgroundColor: '#C9C9C9',
     flex: 1,
     alignItems: 'center'
   },

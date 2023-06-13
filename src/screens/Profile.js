@@ -54,7 +54,7 @@ class Profile extends Component {
               <ul><Text style={styles.container3}> Tu perfil se creo: {auth.currentUser.metadata.creationTime} </Text> </ul>
             </li>
           </div>
-          <View style={styles.container3}> <FlatList
+          <View style={styles.container4}> <FlatList
             data={this.state.allPosts}
             keyExtractor={UnPost => UnPost.id.toString()}
             renderItem={({ item }) => <UnPost postData={item} navigation={this.props.navigation} />} />
@@ -68,7 +68,7 @@ class Profile extends Component {
 
 const styles = StyleSheet.create({
   contenedor: {
-    backgroundColor: '#DCDCDD',
+    backgroundColor: '#C9C9C9',
     alignItems: 'center',
     flex: 1
   },
@@ -93,6 +93,12 @@ const styles = StyleSheet.create({
     color: 'rgb(0,0,0)',
     flex: 5
   },
+  container4: {
+    fontFamily: 'monospace',
+    backgroundColor: 'white',
+    flex: 5
+
+  },
   image: {
     height: 300,
     alignItems: 'center'
@@ -107,7 +113,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: 5
 
-  }
+  },
+  
+  
 })
 
 export default Profile
