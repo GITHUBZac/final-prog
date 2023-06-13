@@ -32,9 +32,23 @@ export default class FormComment extends Component {
                     value={this.state.comentario}
                     placeholder='Agrega tu comentario aquí'
                 />
-                <TouchableOpacity onPress={() => this.crearComentario(this.state.comentario)}>
-                    <Text style={styles.buttonText}>Apreta para comentar</Text>
-                </TouchableOpacity>
+
+
+                {
+                    this.state.comentario == "" ?
+                        <TouchableOpacity style={styles.btnerror}>
+                            <Text style={styles.buttonText}> Apreta para comentar</Text>
+                        </TouchableOpacity>
+                        :
+                        <TouchableOpacity onPress={() => this.crearComentario(this.state.comentario)}>
+                        <Text style={styles.buttonText}>Apreta para comentar</Text>
+                    </TouchableOpacity>
+                }
+
+
+
+
+
             </View>
         )
     }
