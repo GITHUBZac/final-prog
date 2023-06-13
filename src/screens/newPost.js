@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, TouchableWithoutFeedbackBase } from 'react-native'
 import { auth, db } from '../firebase/config';
 import MyCamera from '../components/MyCamera/MyCamera'
+import { MaterialIcons } from '@expo/vector-icons';
 class NewPost extends Component {
     constructor() {
         super()
@@ -61,7 +62,7 @@ class NewPost extends Component {
                                 value={this.state.descripcion}
                             />
                             <TouchableOpacity style={styles.login} onPress={() => this.crearPost()} >
-                                Postear
+                            <MaterialIcons name="file-upload" size={24} color="black"/> Postear
                             </TouchableOpacity>
                         </View>
                 }

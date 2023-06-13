@@ -3,8 +3,7 @@ import { Camera } from "expo-camera"
 import { Text, View, StyleSheet, TouchableOpacity, Image, ActivityIndicator } from 'react-native'
 import { auth } from '../../firebase/config'
 import { storage } from '../../firebase/config'
-import { Entypo } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons';
+import { Entypo, FontAwesome } from '@expo/vector-icons';
 class MyCamera extends Component {
     constructor(props) {
         super(props)
@@ -80,11 +79,11 @@ class MyCamera extends Component {
                                     resizeMode='cover'
                                 />
                                 <TouchableOpacity onPress={() => this.guardar()}>
-                                    <Text>Guardar Foto   </Text>
+                                    <Text><FontAwesome name="save" size={24} color="black" />Guardar Foto</Text>
                                 </TouchableOpacity>
 
                                 <TouchableOpacity onPress={() => this.rechazar()}>
-                                    <Text>Rechazar Foto</Text>
+                                    <Text><Entypo name="squared-cross" size={24} color="black" />Rechazar Foto</Text>
                                 </TouchableOpacity>
                             </View>
                         :

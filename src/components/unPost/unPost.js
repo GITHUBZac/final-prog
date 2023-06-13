@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Text, View, StyleSheet, TouchableOpacity, FlatList, Image } from 'react-native'
 import { auth, db } from '../../firebase/config'
 import firebase from 'firebase'
-import { FontAwesome, EvilIcons } from '@expo/vector-icons'
+import { FontAwesome, EvilIcons, Ionicons } from '@expo/vector-icons'
 
 
 class UnPost extends Component {
@@ -73,7 +73,7 @@ class UnPost extends Component {
             {
               email: this.props.postData.data.owner
             })}>
-          <Text style={styles.textoOwner}>{this.props.postData.data.owner}</Text></TouchableOpacity>
+          <Text style={styles.textoOwner}><Ionicons name="person" size={18} color="black" />{this.props.postData.data.owner}</Text></TouchableOpacity>
 
         <Image
           style={styles.imagen}
@@ -114,7 +114,7 @@ class UnPost extends Component {
 
         </View>
         <Text> Cantidad de Comentarios: {this.state.cantidadDeComentarios}</Text>
-        <Text onPress={() => this.props.navigation.navigate('Comments', { id: this.props.postData.id })}>Ver Comentarios</Text>
+        <Text onPress={() => this.props.navigation.navigate('Comments', { id: this.props.postData.id })}>Ver Comentarios <EvilIcons name="comment" size={24} color="black" /></Text>
       </View>
     )
   }
