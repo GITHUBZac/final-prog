@@ -80,9 +80,9 @@ class UnPost extends Component {
           source={{ uri: this.props.postData.data.imagen }}
           resizeMode='cover'
         />
-        <Text>{this.props.postData.data.descripcion}</Text>
+        <Text style={styles.descripcion}>{this.props.postData.data.descripcion}</Text>
         <View style={styles.contenedorLikes}>
-        <Text> Cantidad de Likes: {this.state.cantidadDeLikes}</Text>
+        <Text style={styles.descripcion}> Cantidad de Likes: {this.state.cantidadDeLikes}</Text>
         <View style={styles.corazon}>
           {
             this.state.propioLike ?
@@ -115,8 +115,8 @@ class UnPost extends Component {
           ) : null}
           </View>
         </View>
-        <Text> Cantidad de Comentarios: {this.state.cantidadDeComentarios}</Text>
-        <Text onPress={() => this.props.navigation.navigate('Comments', { id: this.props.postData.id })}>Ver Comentarios <EvilIcons name="comment" size={24} color="black" /></Text>
+        <Text style={styles.descripcion}> Cantidad de Comentarios: {this.state.cantidadDeComentarios}</Text>
+        <Text style={styles.descripcion} onPress={() => this.props.navigation.navigate('Comments', { id: this.props.postData.id })}>Ver Comentarios <EvilIcons name="comment" size={24} color="black" /></Text>
       </View>
     )
   }
@@ -128,6 +128,9 @@ const styles = StyleSheet.create({
     width: 400,
     alignItems: 'center',
   },
+  descripcion: {
+    fontFamily: 'monospace',
+  },
   bordeImg: {
     borderColor: 'black',
     borderWidth: 1,
@@ -135,7 +138,8 @@ const styles = StyleSheet.create({
     margin: 20
   },
   textoOwner: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontFamily: 'monospace',
   },
   contenedorLikes: {
     flex: 3,

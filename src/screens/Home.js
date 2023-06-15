@@ -45,11 +45,12 @@ const styles = StyleSheet.create({
         flex: 3,
         backgroundColor: 'black',
         alignItems: 'center'
-
+        
         
     },
     textoBtn: {
         color: "white",
+        
 
     }
 })

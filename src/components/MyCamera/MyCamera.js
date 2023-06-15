@@ -62,7 +62,7 @@ class MyCamera extends Component {
                         this.state.mostrarCamara ?
                             <View style={styles.container}>
                                 <TouchableOpacity onPress={() => this.sacarFoto()}>
-                                    <Text>Sacar la foto  <Entypo name="camera" size={24} color="black" /></Text>
+                                    <Text style={styles.sacar}>Sacar la foto  <Entypo name="camera" size={24} color="black" /></Text>
 
                                 </TouchableOpacity>
                                 <Camera
@@ -87,7 +87,7 @@ class MyCamera extends Component {
                                 </TouchableOpacity>
                             </View>
                         :
-                        <Text><ActivityIndicator size='large' color='blue' />  Tus permisos estan cargando</Text>
+                        <Text style={styles.sacar}><ActivityIndicator size='large' color='blue' />  Tus permisos estan cargando</Text>
                 }
             </View>
         )
@@ -100,14 +100,17 @@ const styles = StyleSheet.create(
             height: 500,
             width: 500
         },
-
+        sacar: {
+            color: 'white'
+        },
         imagen: {
-            height: "70vh",
-            width: "70vh"
+            height: 500,
+            width: 500
         },
         container: {
             height: 500,
-            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: 'black'
         },
 
     }

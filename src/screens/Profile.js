@@ -68,14 +68,14 @@ class Profile extends Component {
 
 const styles = StyleSheet.create({
   contenedor: {
-    backgroundColor: '#C9C9C9',
+    backgroundColor: 'black',
     alignItems: 'center',
     flex: 1
   },
 
   container0: {
     fontFamily: 'monospace',
-    color: 'rgb(0,0,0)',
+    color: 'white',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
@@ -90,12 +90,12 @@ const styles = StyleSheet.create({
   },
   container3: {
     fontFamily: 'monospace',
-    color: 'rgb(0,0,0)',
+    color: 'white',
     flex: 5
   },
   container4: {
     fontFamily: 'monospace',
-    backgroundColor: 'white',
+    backgroundColor: 'grey',
     flex: 5
 
   },
