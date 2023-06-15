@@ -57,7 +57,8 @@ export default class FormComment extends Component {
 const styles = StyleSheet.create({
     input: {
         borderColor: 'red',
-        borderWidth: 2
+        borderWidth: 2,
+        color: 'white'
     },
     buttonText: {
         textAlign: 'center',

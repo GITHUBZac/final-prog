@@ -73,7 +73,7 @@ class UnPost extends Component {
             {
               email: this.props.postData.data.owner
             })}>
-          <Text style={styles.textoOwner}><Ionicons name="person" size={18} color="black" />{this.props.postData.data.owner}</Text></TouchableOpacity>
+          <Text style={styles.textoOwner}><Ionicons name="person" size={18} color="black" /> {this.props.postData.data.owner}</Text></TouchableOpacity>
 
         <Image
           style={styles.imagen}
@@ -81,8 +81,9 @@ class UnPost extends Component {
           resizeMode='cover'
         />
         <Text>{this.props.postData.data.descripcion}</Text>
+        <View style={styles.contenedorLikes}>
         <Text> Cantidad de Likes: {this.state.cantidadDeLikes}</Text>
-        <View>
+        <View style={styles.corazon}>
           {
             this.state.propioLike ?
               <TouchableOpacity
@@ -105,13 +106,14 @@ class UnPost extends Component {
                 />
               </TouchableOpacity>
           }
-
-          {this.props.postData.data.owner === auth.currentUser.email ? (
+        </View>
+        <View style={styles.borrarPost}>
+        {this.props.postData.data.owner === auth.currentUser.email ? (
             <TouchableOpacity onPress={() => this.borrarPost()}>
               <FontAwesome name="trash-o" size={24} color="black" />
             </TouchableOpacity>
           ) : null}
-
+          </View>
         </View>
         <Text> Cantidad de Comentarios: {this.state.cantidadDeComentarios}</Text>
         <Text onPress={() => this.props.navigation.navigate('Comments', { id: this.props.postData.id })}>Ver Comentarios <EvilIcons name="comment" size={24} color="black" /></Text>
@@ -130,9 +132,20 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 1,
     padding: 5,
+    margin: 20
   },
   textoOwner: {
     fontWeight: 'bold'
+  },
+  contenedorLikes: {
+    flex: 3,
+    flexDirection: 'row'
+  }, 
+  corazon: {
+    marginLeft: 10
+},
+  borrarPost: {
+       marginLeft: 10
   }
 })
 

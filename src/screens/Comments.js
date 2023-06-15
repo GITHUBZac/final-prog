@@ -24,7 +24,7 @@ export default class Comments extends Component {
         console.log(this.props);
         return (
             
-            <View>
+            <View style={styles.fondo}>
             {this.state.data?.comentarios?.length === 0 ?
                 <View style={styles.texto}>
                   <Text style={styles.texto}>Aca podras ver todos los comentarios del posteo</Text>
@@ -36,14 +36,14 @@ export default class Comments extends Component {
                 </View>
             :
             <View>
-                <Text style={styles.texto}>Aca podras ver todos los comentarios del posteo</Text>
+                <Text style={styles.textob}>Aca podras ver todos los comentarios del posteo</Text>
                 <FlatList
                     data={this.state.data.comentarios}
                     keyExtractor={item => item.createdAt.toString()}
-                    renderItem={({ item }) => <View><Text style={styles.textox}>{item.owner} comentó: </Text> <Text>{item.comentario}</Text></View>}
+                    renderItem={({ item }) => <View><Text style={styles.texto}>{item.owner} comentó: </Text> <Text style={styles.textox}>{item.comentario}</Text></View>}
                 />
                 <FormComment idPost={this.props.route.params.id} />
-                <Text style={styles.login} onPress={() => this.props.navigation.navigate('Home')}>Volver al home</Text>
+                <Text style={styles.buttonText} onPress={() => this.props.navigation.navigate('Home')}>Volver al home</Text>
             </View>}
             </View>
         )
@@ -51,14 +51,35 @@ export default class Comments extends Component {
 }
 
 const styles = StyleSheet.create({
+    texto: {
+        fontSize: 10 ,
+        fontWeight: 'bold',
+        textAlign: 'left',
+        color: 'white'
+    },
+    textob: {
+        fontSize: 10 ,
+        fontWeight: 'bold',
+        textAlign: 'left',
+        color: 'red'
+    },
     textox: {
         fontSize: 10 ,
         fontWeight: 'bold',
         textAlign: 'left',
+        color: 'grey'
     },
     login: {
         color: 'grey',
         fontWeight: 'bold',
         textAlign: 'left'
+    },
+    fondo : {
+        backgroundColor: 'black'
+    },
+    buttonText: {
+        textAlign: 'center',
+        fontWeight: 'bold',
+        color: 'grey'
     },
 })
