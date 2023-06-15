@@ -80,7 +80,7 @@ export default class ProfileAmigo extends Component {
 }
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#C9C9C9',
+    backgroundColor: 'black',
     flex: 1,
     alignItems: 'center'
   },
@@ -96,16 +96,17 @@ const styles = StyleSheet.create({
   },
   container3: {
     fontFamily: 'monospace',
-    color: 'rgb(0,0,0)',
+    color: 'white',
     flex: 1
   },
 
   container0: {
     fontFamily: 'monospace',
-    color: 'rgb(0,0,0)',
+    color: 'white',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
+
   },
   boton: {
     fontFamily: 'monospace',
