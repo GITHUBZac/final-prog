@@ -49,7 +49,7 @@ class Profile extends Component {
             <li>
             <ul><Text style={styles.container3}> Tu perfil se creo: {auth.currentUser.metadata.creationTime} </Text> </ul>
               <ul><Text style={styles.container3} > Bienvenido a tu perfil {this.state.infoUser.usuario}! </Text></ul>
-              <ul><Text style={styles.container3}> Tu foto de perfil:
+              <ul><Text style={styles.container3}> 
               
               <Image
               style={styles.image}
@@ -112,9 +112,10 @@ const styles = StyleSheet.create({
 
   },
   image: {
-    height: 400,
-    width: 400,
-    alignItems: 'center',
+
+    height: 300,
+    width: 300,
+  
    
   },
   boton: {

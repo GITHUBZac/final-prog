@@ -37,7 +37,7 @@ export default class MyImagePicker extends Component {
 
     render() {
         return (
-            <View>
+            <View >
 
                 {
                     this.state.imagenCargada !== '' ?
@@ -45,26 +45,30 @@ export default class MyImagePicker extends Component {
                         <Image 
                         source={{uri: this.state.imagenCargada}} 
                         style={styles.img}
+                        resizeMode='cover'
                         />
                         <TouchableOpacity
+                        style = {styles.input}
                         onPress={()=>this.aceptarImagen()}
                         >
-                            <Text>Aceptar Imagen</Text>
+                            <Text style={styles.btnText} >Aceptar Imagen</Text>
                         </TouchableOpacity>
                         <TouchableOpacity
+                        style = {styles.input}
                         onPress={()=> this.rechazarImagen()}>
-                            <Text>Rechazar Imagen</Text>
+                            <Text style = {styles.btnText}>Rechazar Imagen</Text>
                         </TouchableOpacity>
 
                     </>
                     :
 
                     <>
-                    <Text>Cargue una foto para tu perfil</Text>
+                    
                     <TouchableOpacity
                     onPress = {() => this.activarPicker()}
+                    style = {styles.btn}
                     >
-                   <Text>Cargar imagen de mi libreria</Text>
+                   <Text style = {styles.btnText}>Cargar imagen de mi libreria</Text>
 
                     </TouchableOpacity>
 
@@ -78,7 +82,42 @@ export default class MyImagePicker extends Component {
 }
 
 const styles = StyleSheet.create({
+    input: {
+        borderWidth: 1,
+        borderColor: '#3d3d3d',
+        marginTop: 24,
+        height: 24,
+        padding: 5
+    },
+    btn: {
+        backgroundColor: '#54d0e0',
+        padding: 10,
+        borderRadius: 20,
+        marginTop: 32
+    },
+    btnText: {
+        textAlign: 'center',
+        fontWeight: 'bold',
+        color: 'green'
+    },
+    buttonText: {
+        textAlign: 'center',
+        fontWeight: 'bold',
+        color: 'grey'
+    },
+    login: {
+        color: 'grey',
+        fontWeight: 'bold',
+        textAlign: 'center'
+    },
+    contenedorLogin: {
+        backgroundColor: 'black',
+        width: 180,
+        borderRadius: 10,
+        height: 18
+    },
     img: {
-        height: 400
+        height: 500,
+        
     }
 })
