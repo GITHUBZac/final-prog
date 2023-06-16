@@ -62,7 +62,7 @@ class MyCamera extends Component {
                         this.state.mostrarCamara ?
                             <View style={styles.container}>
                                 <TouchableOpacity onPress={() => this.sacarFoto()}>
-                                    <Text style={styles.sacar}>Sacar la foto  <Entypo name="camera" size={24} color="black" /></Text>
+                                    <Text style={styles.sacar}>Sacar la foto  <Entypo name="camera" size={24} color="white" /></Text>
 
                                 </TouchableOpacity>
                                 <Camera
@@ -79,11 +79,11 @@ class MyCamera extends Component {
                                     resizeMode='cover'
                                 />
                                 <TouchableOpacity onPress={() => this.guardar()}>
-                                    <Text><FontAwesome name="save" size={24} color="black" />Guardar Foto</Text>
+                                    <Text style={styles.sacar}><FontAwesome name="save" size={24} color="green" />Guardar Foto</Text>
                                 </TouchableOpacity>
 
                                 <TouchableOpacity onPress={() => this.rechazar()}>
-                                    <Text><Entypo name="squared-cross" size={24} color="black" />Rechazar Foto</Text>
+                                    <Text style={styles.sacar}><Entypo name="squared-cross" size={24} color="red" />Rechazar Foto</Text>
                                 </TouchableOpacity>
                             </View>
                         :

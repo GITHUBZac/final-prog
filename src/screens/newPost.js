@@ -55,7 +55,7 @@ class NewPost extends Component {
                         :
                         <View>
                             <TextInput
-                                style={styles}
+                                style={styles.sacar}
                                 placeholder='Escribi aca para agregale una descripcion al posteo!'
                                 keyboardType="default"
                                 onChangeText={(text) => this.setState({ descripcion: text })}
@@ -81,6 +81,9 @@ const styles = StyleSheet.create(
             color: 'grey',
             fontWeight: 'bold',
             textAlign: 'center'
+        },
+        sacar: {
+            color: 'white'
         },
     })
 export default NewPost;
