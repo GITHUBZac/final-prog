@@ -44,7 +44,8 @@ class Register extends Component {
                         foto: foto,
                         createdAt: Date.now()
                     })
-                    .then(() => {
+                    .then((resp) => {
+                        console.log(resp);
                         this.setState({
                             inputMail: "",
                             inputPassword: "",
@@ -53,7 +54,7 @@ class Register extends Component {
                             foto: "",
 
                         })
-                        this.props.navigation.navigate('Login', { screen: 'Login' })
+                        this.props.navigation.navigate('InfoAdicionalUser', {docId: resp.id})
                     })
                     .catch((error) => console.log(error))
             )
@@ -95,6 +96,8 @@ class Register extends Component {
                     onChangeText={(text) => this.setState({ bio: text })}
                     value={this.state.bio}
                 />
+
+                
                 {this.state.mostrarCamara ?
                     <View style={{ width: '100vw', heigth: '100vh' }}>
                         <MyCamera onImageUpload={url => this.onImageUpload(url)} />
@@ -111,7 +114,7 @@ class Register extends Component {
                             <Text style={styles.buttonText}> Registrarme</Text>
                         </TouchableOpacity>
                         :
-                        <TouchableOpacity style={styles.btn} onPress={() => this.registrarUsuario(this.state.inputMail, this.state.inputPassword, this.state.username, this.state.bio, this.state.foto, this.state.mostrarCamara = false)}>
+                        <TouchableOpacity style={styles.btn} onPress={() => this.registrarUsuario(this.state.inputMail, this.state.inputPassword, this.state.username, this.state.bio, this.state.mostrarCamara = false)}>
                             <Text style={styles.btnText}> Registrarme</Text>
                         </TouchableOpacity>
                 }
